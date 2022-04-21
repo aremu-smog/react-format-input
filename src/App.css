@@ -1,13 +1,4 @@
-.App {
-	text-align: center;
-}
-
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-
-.App-header {
+.app {
 	background-color: #282c34;
 	min-height: 100vh;
 	display: flex;
@@ -15,9 +6,45 @@
 	align-items: center;
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
-	color: white;
 }
 
-.App-link {
-	color: #61dafb;
+.form {
+	background-color: white;
+	width: 100%;
+	max-width: 400px;
+	padding: 0.5em 1em;
+	border-radius: 0.5em;
+	color: #282c34;
+}
+
+.form__heading {
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.form__input {
+	display: block;
+	width: 100%;
+	padding: 1em;
+	margin: 1em 0;
+	border: 1px solid #282c34;
+	outline: none;
+	border-radius: 0.5em;
+	box-sizing: border-box;
+	transition: border 0.5s;
+}
+
+.form__input:focus,
+.form__input:hover {
+	border: 1px solid #61dafb;
+}
+
+.form__input--submit {
+	border: none;
+	width: 100%;
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: #61dafb;
+	cursor: pointer;
+	margin-bottom: 2em;
 }
