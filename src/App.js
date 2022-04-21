@@ -27,9 +27,6 @@ function App() {
 				amountString += `.${secondPart}`
 			}
 
-			if (amountString.length === 1 && amountString == 0) {
-				amountString = ""
-			}
 			setAmount(amountString)
 		} else {
 			return
