@@ -6,12 +6,39 @@ function App() {
 	const [amount, setAmount] = useState("")
 
 	const handleAmountChange = e => {
-		setAmount(e.target.value)
+		const keyPressed = e.nativeEvent.data
+
+		const keyPattern = /\d/
+		const amountValue = e.target.value
+
+		const strippedAmount = amountValue.replaceAll(",", "")
+
+		if (
+			keyPattern.test(Number(keyPressed)) ||
+			(!amount.includes(".") && keyPressed.includes("."))
+		) {
+			const amountArray = strippedAmount.split(".")
+
+			const firstPart = Number(amountArray[0]).toLocaleString()
+			const secondPart = amountArray[1]
+			let amountString = firstPart
+
+			if (amountArray.length === 2) {
+				amountString += `.${secondPart}`
+			}
+
+			if (amountString.length === 1 && amountString == 0) {
+				amountString = ""
+			}
+			setAmount(amountString)
+		} else {
+			return
+		}
 	}
 
 	return (
 		<section className='app'>
-			<form className='form'>
+			<form className='form' onSubmit={e => e.preventDefault()}>
 				<h2 className='form__heading'>Make Payment </h2>
 				<div>
 					<input
