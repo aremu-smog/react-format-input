@@ -9,14 +9,18 @@ function App() {
 		const keyPressed = e.nativeEvent.data
 
 		const keyPattern = /\d/
-		const amountValue = e.target.value
-
-		const strippedAmount = amountValue.replaceAll(",", "")
-
+		const amountPattern = /\d+\.{1}\d{2}/
+	
 		if (
-			keyPattern.test(Number(keyPressed)) ||
-			(!amount.includes(".") && keyPressed.includes("."))
+			keyPattern.test(Number(keyPressed)) &&
+			amountPattern.test(amount.replaceAll(",", ""))
 		) {
+			return
+		} else {
+
+			const amountValue = e.target.value
+			const strippedAmount = amountValue.replaceAll(",", "")
+	
 			const amountArray = strippedAmount.split(".")
 
 			const firstPart = Number(amountArray[0]).toLocaleString()
@@ -28,8 +32,6 @@ function App() {
 			}
 
 			setAmount(amountString)
-		} else {
-			return
 		}
 	}
 
