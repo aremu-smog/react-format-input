@@ -6,16 +6,14 @@ function App() {
 	const [amount, setAmount] = useState("")
 
 	const handleAmountChange = e => {
+		console.log(e)
 		const keyPressed = e.nativeEvent.data
 		const keyPattern = /\d/
 
 		if (keyPattern.test(Number(keyPressed))) {
-			const amountValue = e.target.value
+			const amountValue = e.target.value.trim()
 			const strippedAmount = amountValue.replaceAll(",", "")
-			const amountInNumber = Number(strippedAmount)
-
-			const amountString = amountInNumber.toLocaleString()
-
+			const amountString = strippedAmount.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 			setAmount(amountString)
 		}
 	}
