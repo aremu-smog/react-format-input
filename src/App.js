@@ -6,7 +6,6 @@ function App() {
 	const [amount, setAmount] = useState("")
 
 	const handleAmountChange = e => {
-		console.log(e)
 		const keyPressed = e.nativeEvent.data
 		const keyPattern = /\d/
 
